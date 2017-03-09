@@ -1,9 +1,7 @@
 package be.vdab.repositories;
 
 import java.util.Optional;
-
 import javax.persistence.EntityManager;
-
 import be.vdab.entities.Artikel;
 import be.vdab.filters.JPAFilter;
 
@@ -18,4 +16,3 @@ public class ArtikelRepository {
 	}
     }
 }
-//test2

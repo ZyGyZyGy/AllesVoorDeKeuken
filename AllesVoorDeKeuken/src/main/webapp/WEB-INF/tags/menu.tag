@@ -2,12 +2,16 @@
 <%@taglib prefix='c' uri='http://java.sun.com/jsp/jstl/core'%>
 <nav>
 	<ul>
-		<li><a href="<c:url value='/artikels/zoekenopnummer.htm'/>">Artikels zoeken</a></li>
-		<li><a href="<c:url value='/artikels/toevoegen.htm'/>">Artikels toevoegen</a></li>
-		<li><a href="<c:url value='/artikels/zoekenopnaam.htm'/>">Artikels zoeken op naam</a></li>
-		<li><a href="<c:url value='/artikels/prijsverhoging.htm'/>">Prijsverhoging</a></li>
-		<li><a href="<c:url value='/artikels/artikelkortingen.htm'/>">Artikelkortingen</a></li>
-		<li><a href="<c:url value='/artikels/artikelkortingen.htm'/>">Artikels per artikelgroep</a></li>
+		<li><a href="#">Artikels</a>
+			<ul>
+				<li><a href="<c:url value='/artikels/zoekenopnummer.htm'/>">Artikels zoeken</a></li>
+				<li><a href="<c:url value='/artikels/toevoegen.htm'/>">Artikels toevoegen</a></li>
+				<li><a href="<c:url value='/artikels/zoekenopnaam.htm'/>">Artikels zoeken op naam</a></li>
+				<li><a href="<c:url value='/artikels/prijsverhoging.htm'/>">Prijsverhoging</a></li>
+				<li><a href="<c:url value='/artikels/artikelkortingen.htm'/>">Artikelkortingen</a></li>
+				<li><a href="<c:url value='/artikels/artikelkortingen.htm'/>">Artikels per artikelgroep</a></li>
+			</ul>
+		</li>
 	</ul>
 	
 </nav>
