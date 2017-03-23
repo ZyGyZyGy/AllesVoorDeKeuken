@@ -11,4 +11,10 @@
 			where a.naam like :woord
 		</query>
 	</named-query>
+	<named-query name="Artikel.prijsverhoging">
+		<query>
+			update Artikel a
+			set a.verkoopprijs = a.verkoopprijs * :factor
+		</query>
+	</named-query>
 </entity-mappings> 
