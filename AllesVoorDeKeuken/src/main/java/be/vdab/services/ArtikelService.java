@@ -1,7 +1,10 @@
 package be.vdab.services;
 
+import java.util.List;
 import java.util.Optional;
+
 import javax.persistence.PersistenceException;
+
 import be.vdab.entities.Artikel;
 import be.vdab.repositories.ArtikelRepository;
 
@@ -33,5 +36,9 @@ public class ArtikelService extends AbstractService {
 	    rollback();
 	    throw ex;
 	}
+    }
+
+    public List<Artikel> findByWoord(String woord) {
+	return artikelRepository.findByWoord(woord);
     }
 }

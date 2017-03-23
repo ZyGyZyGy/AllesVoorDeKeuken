@@ -10,8 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import javassist.SerialVersionUID;
-
 @Entity
 @Table(name = "artikels")
 public class Artikel implements Serializable {
