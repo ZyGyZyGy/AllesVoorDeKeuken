@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import be.vdab.entities.Artikel;
+import be.vdab.entities.FoodArtikel;
+import be.vdab.entities.NonFoodArtikel;
 import be.vdab.services.ArtikelService;
 import be.vdab.util.StringUtils;
 
@@ -38,6 +40,40 @@ public class ToevoegenServlet extends HttpServlet {
 	    fouten.put("naam", "naam verplicht");
 	}
 
+	long houdbaarheid = 0;
+	long garantie = 0;
+	String soort = request.getParameter("soort");
+	if (soort == null) {
+	    fouten.put("soort", "maak een keuze");
+	} else {
+	    switch (soort) {
+	    case "F":
+		String houdbaarheidString = request.getParameter("houdbaarheid");
+		if (StringUtils.isLong(houdbaarheidString)) {
+		    houdbaarheid = Long.parseLong(houdbaarheidString);
+		    if (!FoodArtikel.isHoudbaarheidValid(houdbaarheid)) {
+			fouten.put("houdbaarheid", "tik een positief getal");
+		    }
+		} else {
+		    fouten.put("houdbaarheid", "tik een positief getal");
+		}
+		break;
+	    case "NF":
+		String garantieString = request.getParameter("garantie");
+		if (StringUtils.isLong(garantieString)) {
+		    garantie = Long.parseLong(garantieString);
+		    if (!NonFoodArtikel.isGarantieValid(garantie)) {
+			fouten.put("garantie", "tik een positief getal of 0");
+		    }
+		} else {
+		    fouten.put("garantie", "tik een positief getal of 0");
+		}
+		break;
+	    default:
+		fouten.put("soort", "maak een (geldige) keuze");
+	    }
+	}
+
 	String aankoopprijsStr = request.getParameter("aankoopprijs");
 	BigDecimal aankoopprijs = null;
 	if (StringUtils.isBigDecimal(aankoopprijsStr)) {
@@ -61,7 +97,12 @@ public class ToevoegenServlet extends HttpServlet {
 	}
 
 	if (fouten.isEmpty()) {
-	    Artikel artikel = new Artikel(naam, aankoopprijs, verkoopprijs);
+	    Artikel artikel;
+	    if ("F".equals(soort)) {
+		artikel = new FoodArtikel(naam, aankoopprijs, verkoopprijs, houdbaarheid);
+	    } else {
+		artikel = new NonFoodArtikel(naam, aankoopprijs, verkoopprijs, garantie);
+	    }
 	    artikelService.create(artikel);
 	    response.sendRedirect(String.format(REDIRECT_URL, request.getContextPath(), artikel.getId()));
 	} else {

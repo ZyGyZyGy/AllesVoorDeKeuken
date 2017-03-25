@@ -12,6 +12,12 @@
 	<form method='post' id='toevoegform'>
 		<label>Naam:<span>${fouten.naam}</span>
 		<input name="naam" value="${param.naam}" required autofocus></label>
+		<label><input type="radio" name="soort" id="food" value="F" required><span>${fouten.soort}</span>Food</label><br>
+		<label>Houdbaarheid:
+		<input type="number" name="houdbaarheid" id="houdbaarheid" required></label>
+		<label><input type="radio" name="soort" id="nonfood" value="NF"><span>${fouten.soort}</span>Non-Food</label><br>
+		<label>Garantie:
+		<input type="number" name="garantie" id="garantie" required></label>
 		<label>Aankoopprijs:<span>${fouten.aankoopprijs}</span>
 		<input name="aankoopprijs" value="${param.aankoopprijs}" type="number" min="0.01" step="0.01" required></label>
 		<label>Verkoopprijs:<span>${fouten.verkoopprijs}</span>
@@ -22,6 +28,15 @@
 		document.getElementById('toevoegform').onsubmit = function() {
 			document.getElementById('toevoegknop').disabled = true;
 		};
+		document.getElementById('food').onclick = enableDisableInputs;
+		document.getElementById('nonfood').onclick = enableDisableInputs;
+		enableDisableInputs();
+		function enableDisableInputs() {
+			document.getElementById('houdbaarheid').disabled = !document
+					.getElementById('food').checked;
+			document.getElementById('garantie').disabled = !document
+					.getElementById('nonfood').checked;
+		}
 	</script>
 </body>
 </html>
