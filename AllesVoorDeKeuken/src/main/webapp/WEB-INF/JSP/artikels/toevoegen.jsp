@@ -12,16 +12,21 @@
 	<form method='post' id='toevoegform'>
 		<label>Naam:<span>${fouten.naam}</span>
 		<input name="naam" value="${param.naam}" required autofocus></label>
-		<label><input type="radio" name="soort" id="food" value="F" required><span>${fouten.soort}</span>Food</label><br>
+		
+		<label><input type="radio" name="soort" id="food" value="F" required><span>${fouten.soort}</span>Food</label><br>		
 		<label>Houdbaarheid:
 		<input type="number" name="houdbaarheid" id="houdbaarheid" required></label>
+		
 		<label><input type="radio" name="soort" id="nonfood" value="NF"><span>${fouten.soort}</span>Non-Food</label><br>
 		<label>Garantie:
 		<input type="number" name="garantie" id="garantie" required></label>
+		
 		<label>Aankoopprijs:<span>${fouten.aankoopprijs}</span>
 		<input name="aankoopprijs" value="${param.aankoopprijs}" type="number" min="0.01" step="0.01" required></label>
+		
 		<label>Verkoopprijs:<span>${fouten.verkoopprijs}</span>
 		<input name="verkoopprijs" value="${param.verkoopprijs}" type="number" step="0.01" required></label>
+		
 		<input type="submit" value="Toevoegen" id="toevoegknop">
 	</form>
 	<script>

@@ -98,7 +98,7 @@ public class ToevoegenServlet extends HttpServlet {
 
 	if (fouten.isEmpty()) {
 	    Artikel artikel;
-	    if ("F".equals(soort)) {
+	    if (soort.equals("F")) {
 		artikel = new FoodArtikel(naam, aankoopprijs, verkoopprijs, houdbaarheid);
 	    } else {
 		artikel = new NonFoodArtikel(naam, aankoopprijs, verkoopprijs, garantie);
