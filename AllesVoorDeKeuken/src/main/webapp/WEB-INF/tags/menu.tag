@@ -9,7 +9,7 @@
 				<li><a href="<c:url value='/artikels/zoekenopnaam.htm'/>">Artikels zoeken op naam</a></li>
 				<li><a href="<c:url value='/artikels/prijsverhoging.htm'/>">Prijsverhoging</a></li>
 				<li><a href="<c:url value='/artikels/artikelkortingen.htm'/>">Artikelkortingen</a></li>
-				<li><a href="<c:url value='/artikels/artikelkortingen.htm'/>">Artikels per artikelgroep</a></li>
+				<li><a href="<c:url value='/artikels/perartikelgroep.htm'/>">Artikels per artikelgroep</a></li>
 			</ul>
 		</li>
 	</ul>

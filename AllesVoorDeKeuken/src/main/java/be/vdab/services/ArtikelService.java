@@ -7,6 +7,7 @@ import java.util.Optional;
 import javax.persistence.PersistenceException;
 
 import be.vdab.entities.Artikel;
+import be.vdab.entities.ArtikelGroep;
 import be.vdab.repositories.ArtikelRepository;
 
 public class ArtikelService extends AbstractService {

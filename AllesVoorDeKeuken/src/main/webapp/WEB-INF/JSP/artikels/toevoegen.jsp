@@ -21,6 +21,15 @@
 		<label>Garantie:
 		<input type="number" name="garantie" id="garantie" required></label>
 		
+		<label>Artikelgroep:<span>${fouten.artikelgroepen}</span>
+		<select name=artikelgroepen size="${artikelgroepen.size()}" required>
+			<c:forEach items="${artikelgroepen}" var="artikelgroep">
+				<option value="${artikelgroep.id}" ${artikelgroep.id == param.artikelgroepen ? "selected" : ""}>
+					${artikelgroep.naam}
+				</option>
+			</c:forEach>
+		</select></label>
+		
 		<label>Aankoopprijs:<span>${fouten.aankoopprijs}</span>
 		<input name="aankoopprijs" value="${param.aankoopprijs}" type="number" min="0.01" step="0.01" required></label>
 		

@@ -12,8 +12,8 @@ public class NonFoodArtikel extends Artikel {
     private static final long serialVersionUID = 1L;
     private long garantie;
 
-    public NonFoodArtikel(String naam, BigDecimal aankoopprijs, BigDecimal verkoopprijs, long garantie) {
-	super(naam, aankoopprijs, verkoopprijs);
+    public NonFoodArtikel(String naam, BigDecimal aankoopprijs, BigDecimal verkoopprijs, long garantie, ArtikelGroep artikelGroep) {
+	super(naam, aankoopprijs, verkoopprijs, artikelGroep);
 	setGarantie(garantie);
     }
 

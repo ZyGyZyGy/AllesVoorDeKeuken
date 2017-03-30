@@ -12,8 +12,8 @@ public class FoodArtikel extends Artikel {
     private static final long serialVersionUID = 1L;
     private long houdbaarheid;
 
-    public FoodArtikel(String naam, BigDecimal aankoopprijs, BigDecimal verkoopprijs, long houdbaarheid) {
-	super(naam, aankoopprijs, verkoopprijs);
+    public FoodArtikel(String naam, BigDecimal aankoopprijs, BigDecimal verkoopprijs, long houdbaarheid, ArtikelGroep artikelGroep) {
+	super(naam, aankoopprijs, verkoopprijs, artikelGroep);
 	setHoudbaarheid(houdbaarheid);
     }
 

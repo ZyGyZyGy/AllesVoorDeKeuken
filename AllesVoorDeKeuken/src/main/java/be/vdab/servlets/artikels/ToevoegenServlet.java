@@ -12,8 +12,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import be.vdab.entities.Artikel;
+import be.vdab.entities.ArtikelGroep;
 import be.vdab.entities.FoodArtikel;
 import be.vdab.entities.NonFoodArtikel;
+import be.vdab.services.ArtikelGroepService;
 import be.vdab.services.ArtikelService;
 import be.vdab.util.StringUtils;
 
@@ -23,10 +25,12 @@ public class ToevoegenServlet extends HttpServlet {
     private static final String VIEW = "/WEB-INF/JSP/artikels/toevoegen.jsp";
     private static final String REDIRECT_URL = "%s/artikels/zoekenopnummer.htm?id=%d";
     private final transient ArtikelService artikelService = new ArtikelService();
+    private final transient ArtikelGroepService artikelGroepService = new ArtikelGroepService();
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
 	    throws ServletException, IOException {
+	request.setAttribute("artikelgroepen", artikelGroepService.findAll());
 	request.getRequestDispatcher(VIEW).forward(request, response);
     }
 
@@ -96,12 +100,18 @@ public class ToevoegenServlet extends HttpServlet {
 	    fouten.put("verkoopprijs", "tik een positief getal");
 	}
 
+	String artikelGroepId = request.getParameter("artikelgroepen");
+	if (artikelGroepId == null) {
+	    fouten.put("artikelgroepen", "verplicht");
+	}
+	
 	if (fouten.isEmpty()) {
 	    Artikel artikel;
+	    ArtikelGroep artikelGroep = artikelGroepService.read(Long.parseLong(artikelGroepId)).get();
 	    if (soort.equals("F")) {
-		artikel = new FoodArtikel(naam, aankoopprijs, verkoopprijs, houdbaarheid);
+		artikel = new FoodArtikel(naam, aankoopprijs, verkoopprijs, houdbaarheid, artikelGroep);
 	    } else {
-		artikel = new NonFoodArtikel(naam, aankoopprijs, verkoopprijs, garantie);
+		artikel = new NonFoodArtikel(naam, aankoopprijs, verkoopprijs, garantie, artikelGroep);
 	    }
 	    artikelService.create(artikel);
 	    response.sendRedirect(String.format(REDIRECT_URL, request.getContextPath(), artikel.getId()));
