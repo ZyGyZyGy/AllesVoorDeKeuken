@@ -147,5 +147,5 @@ public abstract class Artikel implements Serializable {
     }
     
 }
-
+//test
 
